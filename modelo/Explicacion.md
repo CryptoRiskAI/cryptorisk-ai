@@ -18,8 +18,10 @@ Usando Streamlit (una biblioteca libre de código abierto para Python que permit
 Con los comandos señalados posteriormente es como se inicia este entorno virtual:
 
     pip install streamlit pandas numpy scikit-learn
+    # intalación de la biblioteca de streamlit por cmd
     
     streamlit run app.py
+    # Ejecución directa una vez se dirija a la carpeta destino (cmd).
 
 El archivo sintético elaborado por el equipo y de extensnión CSV es cargado con las columnas correspondientes según el diccionario de datos (Identificador, Tipo de activo, Servicio, Uso criptográfico, Algoritmo, Tamaño de clave, Exposición, Criticidad, Sensibilidad, Retención (años), Dependencia de proveedor, Migración, Vigencia).
 
