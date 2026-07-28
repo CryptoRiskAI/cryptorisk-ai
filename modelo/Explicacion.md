@@ -17,8 +17,9 @@ A partir de un archivo elaborado en Google Colab inicialmente con los parámetro
 Usando Streamlit (una biblioteca libre de código abierto para Python que permite crear aplicaciones web interactivas).
 Con los comandos señalados posteriormente es como se inicia este entorno virtual:
 
-pip install streamlit pandas numpy scikit-learn
-streamlit run app.py
+    pip install streamlit pandas numpy scikit-learn
+    
+    streamlit run app.py
 
 El archivo sintético elaborado por el equipo y de extensnión CSV es cargado con las columnas correspondientes según el diccionario de datos (Identificador, Tipo de activo, Servicio, Uso criptográfico, Algoritmo, Tamaño de clave, Exposición, Criticidad, Sensibilidad, Retención (años), Dependencia de proveedor, Migración, Vigencia).
 
