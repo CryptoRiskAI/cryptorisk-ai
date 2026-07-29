@@ -1,0 +1,61 @@
+Identificador,Tipo de activo,Servicio,Uso criptográfico,Algoritmo,Tamaño de clave,Exposición,Criticidad,Sensibilidad,Retención (años),Dependencia de proveedor,Migración,Vigencia,Score Total
+Activo_1,Certificado digital,API interna,Cifrado en tránsito,RSA-2048,2048 bits,Alta,Alta,Interno,10-20,Baja,Alta,Próximo a expirar,51
+Activo_2,Token de autenticación,TLS,Cifrado en reposo,RSA-2048,2048 bits,Alta,Alta,Secreto,10-20,Baja,Baja,Expirado,49
+Activo_3,Certificado digital,VPN,Autenticación,PQC,Variable (NIST PQC),Baja,Media,Confidencial,<5,Media,Media,Próximo a expirar,20
+Activo_4,Certificado digital,Firma digital,Firma digital,ECC-P256,256 bits,Alta,Alta,Interno,>20,Baja,Media,Próximo a expirar,47
+Activo_5,Token de autenticación,Firma digital,Firma digital,RSA-2048,2048 bits,Media,Baja,Público,>20,Baja,Alta,Vigente,38
+Activo_6,Certificado digital,Identidad,Firma digital,RSA-2048,2048 bits,Alta,Alta,Confidencial,5-10,Media,Alta,Expirado,51
+Activo_7,Clave de cifrado,API interna,Cifrado en tránsito,AES-256,256 bits,Alta,Alta,Interno,5-10,Baja,Baja,Expirado,32
+Activo_8,Clave de cifrado,API interna,Cifrado en reposo,ECC-P256,256 bits,Media,Baja,Confidencial,10-20,Baja,Media,Próximo a expirar,34
+Activo_9,Certificado digital,VPN,Firma digital,RSA-2048,2048 bits,Media,Alta,Secreto,5-10,Alta,Media,Expirado,44
+Activo_10,Clave de firma,API interna,Firma digital,SHA-256,256 bits,Media,Media,Público,10-20,Baja,Alta,Expirado,33
+Activo_11,Token de autenticación,Identidad,Cifrado en tránsito,SHA-256,256 bits,Alta,Baja,Público,5-10,Alta,Alta,Vigente,32
+Activo_12,Credencial de VPN,Identidad,Autenticación,ECC-P256,256 bits,Baja,Baja,Confidencial,<5,Baja,Alta,Próximo a expirar,30
+Activo_13,Certificado digital,Firma digital,Autenticación,PQC,Variable (NIST PQC),Baja,Alta,Secreto,5-10,Alta,Media,Próximo a expirar,31
+Activo_14,Clave de cifrado,API interna,Cifrado en reposo,RSA-2048,2048 bits,Baja,Baja,Interno,10-20,Alta,Alta,Próximo a expirar,35
+Activo_15,Certificado digital,Firma digital,Firma digital,ECC-P256,256 bits,Media,Baja,Secreto,5-10,Alta,Alta,Vigente,39
+Activo_16,Certificado digital,Correo,Cifrado en reposo,ECC-P256,256 bits,Baja,Baja,Secreto,>20,Alta,Media,Expirado,37
+Activo_17,Credencial de VPN,VPN,Cifrado en reposo,SHA-256,256 bits,Baja,Baja,Confidencial,5-10,Baja,Baja,Próximo a expirar,22
+Activo_18,Certificado digital,VPN,Cifrado en reposo,SHA-256,256 bits,Baja,Baja,Interno,<5,Alta,Media,Próximo a expirar,19
+Activo_19,Certificado digital,VPN,Cifrado en tránsito,RSA-2048,2048 bits,Alta,Baja,Confidencial,10-20,Alta,Alta,Próximo a expirar,46
+Activo_20,Clave de firma,Correo,Cifrado en reposo,RSA-2048,2048 bits,Baja,Baja,Confidencial,5-10,Baja,Media,Expirado,30
+Activo_21,Certificado digital,TLS,Autenticación,PQC,Variable (NIST PQC),Media,Media,Confidencial,<5,Media,Alta,Próximo a expirar,28
+Activo_22,Clave de cifrado,TLS,Cifrado en reposo,SHA-256,256 bits,Alta,Media,Secreto,>20,Alta,Media,Vigente,45
+Activo_23,Credencial de VPN,VPN,Cifrado en tránsito,PQC,Variable (NIST PQC),Alta,Media,Confidencial,<5,Media,Media,Expirado,28
+Activo_24,Credencial de VPN,Identidad,Autenticación,RSA-2048,2048 bits,Alta,Alta,Secreto,>20,Alta,Alta,Próximo a expirar,60
+Activo_25,Credencial de VPN,Firma digital,Autenticación,RSA-2048,2048 bits,Media,Alta,Público,>20,Baja,Media,Expirado,41
+Activo_26,Clave de firma,TLS,Cifrado en tránsito,PQC,Variable (NIST PQC),Alta,Baja,Público,10-20,Baja,Media,Próximo a expirar,25
+Activo_27,Certificado digital,VPN,Cifrado en tránsito,RSA-2048,2048 bits,Alta,Alta,Público,10-20,Baja,Baja,Vigente,40
+Activo_28,Certificado digital,Correo,Cifrado en tránsito,ECC-P256,256 bits,Baja,Media,Secreto,10-20,Media,Baja,Expirado,34
+Activo_29,Clave de cifrado,VPN,Firma digital,PQC,Variable (NIST PQC),Alta,Baja,Interno,5-10,Media,Baja,Vigente,22
+Activo_30,Token de autenticación,Correo,Cifrado en tránsito,AES-256,256 bits,Alta,Media,Interno,>20,Alta,Media,Expirado,36
+Activo_31,Clave de firma,Firma digital,Firma digital,ECC-P256,256 bits,Media,Baja,Interno,10-20,Alta,Alta,Próximo a expirar,36
+Activo_32,Clave de cifrado,API interna,Cifrado en tránsito,PQC,Variable (NIST PQC),Baja,Baja,Interno,>20,Alta,Baja,Próximo a expirar,20
+Activo_33,Clave de firma,API interna,Firma digital,RSA-2048,2048 bits,Media,Alta,Confidencial,5-10,Alta,Baja,Expirado,38
+Activo_34,Credencial de VPN,Firma digital,Cifrado en tránsito,AES-256,256 bits,Alta,Baja,Público,5-10,Alta,Alta,Próximo a expirar,29
+Activo_35,Token de autenticación,API interna,Autenticación,ECC-P256,256 bits,Baja,Baja,Interno,10-20,Baja,Media,Vigente,28
+Activo_36,Token de autenticación,VPN,Autenticación,RSA-2048,2048 bits,Media,Alta,Confidencial,>20,Alta,Baja,Vigente,44
+Activo_37,Clave de firma,API interna,Cifrado en tránsito,AES-256,256 bits,Alta,Media,Secreto,5-10,Media,Baja,Expirado,33
+Activo_38,Credencial de VPN,TLS,Cifrado en reposo,SHA-256,256 bits,Alta,Baja,Confidencial,10-20,Baja,Alta,Próximo a expirar,41
+Activo_39,Certificado digital,Identidad,Cifrado en tránsito,SHA-256,256 bits,Alta,Baja,Confidencial,5-10,Media,Baja,Vigente,30
+Activo_40,Certificado digital,API interna,Cifrado en reposo,ECC-P256,256 bits,Alta,Media,Interno,5-10,Media,Alta,Próximo a expirar,41
+Activo_41,Credencial de VPN,API interna,Firma digital,AES-256,256 bits,Baja,Alta,Interno,5-10,Alta,Baja,Vigente,24
+Activo_42,Credencial de VPN,Firma digital,Firma digital,AES-256,256 bits,Alta,Alta,Interno,>20,Media,Baja,Expirado,38
+Activo_43,Credencial de VPN,TLS,Cifrado en reposo,PQC,Variable (NIST PQC),Media,Alta,Público,10-20,Media,Alta,Próximo a expirar,33
+Activo_44,Clave de cifrado,Correo,Firma digital,RSA-2048,2048 bits,Baja,Baja,Interno,5-10,Baja,Alta,Próximo a expirar,32
+Activo_45,Credencial de VPN,API interna,Cifrado en reposo,AES-256,256 bits,Alta,Media,Interno,10-20,Baja,Media,Expirado,33
+Activo_46,Credencial de VPN,Correo,Firma digital,AES-256,256 bits,Media,Media,Secreto,5-10,Media,Alta,Próximo a expirar,36
+Activo_47,Certificado digital,Firma digital,Firma digital,SHA-256,256 bits,Baja,Baja,Confidencial,<5,Alta,Alta,Vigente,27
+Activo_48,Clave de firma,Identidad,Cifrado en tránsito,AES-256,256 bits,Alta,Alta,Confidencial,10-20,Media,Alta,Próximo a expirar,46
+Activo_49,Clave de firma,API interna,Cifrado en tránsito,PQC,Variable (NIST PQC),Media,Alta,Público,<5,Alta,Alta,Próximo a expirar,27
+Activo_50,Certificado digital,Identidad,Cifrado en reposo,ECC-P256,256 bits,Baja,Alta,Público,>20,Media,Alta,Expirado,41
+Activo_51,Token de autenticación,Identidad,Autenticación,PQC,Variable (NIST PQC),Baja,Baja,Interno,<5,Alta,Baja,Expirado,11
+Activo_52,Token de autenticación,Identidad,Cifrado en reposo,SHA-256,256 bits,Baja,Media,Interno,10-20,Media,Media,Próximo a expirar,28
+Activo_53,Clave de cifrado,Correo,Cifrado en tránsito,RSA-2048,2048 bits,Media,Baja,Interno,10-20,Alta,Media,Vigente,33
+Activo_54,Credencial de VPN,Firma digital,Autenticación,ECC-P256,256 bits,Alta,Media,Confidencial,10-20,Media,Media,Vigente,42
+Activo_55,Credencial de VPN,TLS,Firma digital,ECC-P256,256 bits,Baja,Media,Público,>20,Media,Media,Próximo a expirar,31
+Activo_56,Credencial de VPN,Identidad,Cifrado en tránsito,SHA-256,256 bits,Alta,Baja,Confidencial,<5,Media,Media,Próximo a expirar,30
+Activo_57,Token de autenticación,TLS,Autenticación,SHA-256,256 bits,Alta,Baja,Confidencial,<5,Baja,Baja,Expirado,27
+Activo_58,Certificado digital,Firma digital,Autenticación,RSA-2048,2048 bits,Media,Alta,Público,10-20,Media,Alta,Vigente,43
+Activo_59,Clave de cifrado,TLS,Autenticación,SHA-256,256 bits,Media,Media,Interno,<5,Alta,Media,Expirado,25
+Activo_60,Certificado digital,TLS,Cifrado en reposo,PQC,Variable (NIST PQC),Baja,Alta,Interno,10-20,Alta,Alta,Vigente,33
