@@ -9,74 +9,80 @@ from sklearn.metrics import silhouette_score
 st.set_page_config(page_title="CryptoRisk AI", layout="wide")
 st.title("CryptoRisk AI — Priorización de activos criptográficos")
 
-# -------------------- TEMA CYBERPUNK / BLADE RUNNER --------------------
+# -------------------- TEMA MINIMALISTA --------------------
 st.markdown("""
 <style>
 
-/* Fondo general de la app */
+/* Fondo general de la app, tonos claros y neutros */
 .stApp {
-    background-color: #0a0e17;
-    color: #e6f1ff;
+    background-color: #fafafa;
+    color: #2b2b2b;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-/* Título principal con glow cian */
+/* Título principal, sobrio, sin glow */
 h1 {
-    color: #08f7fe !important;
-    text-shadow: 0 0 8px #08f7fe, 0 0 20px rgba(8, 247, 254, 0.4);
-    font-family: 'Courier New', monospace;
-    letter-spacing: 1px;
-    border-bottom: 1px solid #08f7fe;
+    color: #2b2b2b !important;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    border-bottom: 1px solid #c9c9c9;
     padding-bottom: 10px;
 }
 
-/* Subtítulos con glow magenta, más sutil */
+/* Subtítulos en gris azulado apagado */
 h2, h3 {
-    color: #fe53bb !important;
-    text-shadow: 0 0 6px rgba(254, 83, 187, 0.5);
-    font-family: 'Courier New', monospace;
+    color: #4a5a66 !important;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 500;
 }
 
 /* Tarjetas de métricas (st.metric) */
 div[data-testid="stMetric"] {
-    background-color: #131a2b;
-    border: 1px solid #08f7fe;
-    border-radius: 6px;
+    background-color: #f0f0ee;
+    border: 1px solid #d6d6d3;
+    border-radius: 4px;
     padding: 12px;
-    box-shadow: 0 0 10px rgba(8, 247, 254, 0.15);
 }
 div[data-testid="stMetricValue"] {
-    color: #08f7fe !important;
+    color: #4a5a66 !important;
+    font-family: 'Times New Roman', Times, serif;
 }
 div[data-testid="stMetricLabel"] {
-    color: #e6f1ff !important;
+    color: #6b6b6b !important;
 }
 
 /* Tablas / dataframes */
 div[data-testid="stDataFrame"] {
-    border: 1px solid #fe53bb;
+    border: 1px solid #d6d6d3;
     border-radius: 4px;
 }
 
 /* Sidebar */
 section[data-testid="stSidebar"] {
-    background-color: #05070d;
-    border-right: 1px solid #08f7fe;
+    background-color: #f0f0ee;
+    border-right: 1px solid #d6d6d3;
 }
 
 /* Botón de descarga */
 div[data-testid="stDownloadButton"] button {
-    background-color: #131a2b;
-    color: #f9c80e;
-    border: 1px solid #f9c80e;
-    text-shadow: 0 0 4px #f9c80e;
+    background-color: #ffffff;
+    color: #4a5a66;
+    border: 1px solid #9aa5ab;
+    font-family: 'Times New Roman', Times, serif;
 }
 div[data-testid="stDownloadButton"] button:hover {
-    background-color: #f9c80e;
-    color: #0a0e17;
+    background-color: #4a5a66;
+    color: #ffffff;
+}
+
+/* Texto general del cuerpo (párrafos, listas) */
+p, li, span, label {
+    font-family: 'Times New Roman', Times, serif;
 }
 
 </style>
 """, unsafe_allow_html=True)
+
 
 # -------------------- PESOS Y FUNCIONES (idénticos al notebook) --------------------
 PESOS = {
@@ -198,10 +204,10 @@ if archivo is not None:
         c1, c2 = st.columns(2)
         with c1:
             st.subheader("Distribución por Nivel de Riesgo")
-            st.bar_chart(df["Nivel de Riesgo"].value_counts(), color="#08f7fe")
+            st.bar_chart(df["Nivel de Riesgo"].value_counts(), color="#4a5a66")
         with c2:
             st.subheader("Distribución por Cluster")
-            st.bar_chart(df["Cluster"].value_counts(), color="#fe53bb")
+            st.bar_chart(df["Cluster"].value_counts(), color="#9aa5ab")
 
         # Perfiles de clúster
         st.subheader("Perfiles de los clústeres")
