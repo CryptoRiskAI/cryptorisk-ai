@@ -20,8 +20,8 @@ Con los comandos señalados posteriormente es como se inicia este entorno virtua
     pip install streamlit pandas numpy scikit-learn
     # intalación de la biblioteca de streamlit por cmd
     
-    streamlit run app.py
-    # Ejecución directa una vez se dirija a la carpeta destino (cmd).
+    streamlit run modelo/app.py
+    # Ejecución desde la raíz del repositorio (cmd).
 
 El archivo sintético elaborado por el equipo y de extensnión CSV es cargado con las columnas correspondientes según el diccionario de datos (Identificador, Tipo de activo, Servicio, Uso criptográfico, Algoritmo, Tamaño de clave, Exposición, Criticidad, Sensibilidad, Retención (años), Dependencia de proveedor, Migración, Vigencia).
 

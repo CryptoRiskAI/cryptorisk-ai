@@ -34,15 +34,27 @@ The project was developed as an academic MVP for the Cyber Quantum Summer School
 
 ```
 cryptorisk-ai/
+├── .github/
+│   └── workflows/
+│       └── tests.yml              # CI pipeline (GitHub Actions, ubuntu-latest)
 ├── LICENSE
 ├── README.md
+├── pytest.ini                     # pytest configuration
+├── requirements.txt               # Pinned dependencies
 ├── data/
-│   └── README.md              # Dataset documentation and licensing
-└── modelo/
-    ├── app.py                 # Streamlit dashboard — main application entry point
-    ├── proyectoquantum.py     # Synthetic data generator, validation, scoring, and clustering
-    ├── Explicacion.md         # Technical methodology notes (Spanish)
-    └── test.py                # Streamlit smoke test
+│   └── README.md                  # Dataset documentation and licensing
+├── modelo/
+│   ├── app.py                     # Streamlit dashboard — main application entry point
+│   ├── inventario_sintetico.csv   # Pre-built synthetic 60-asset dataset (seed=42)
+│   ├── proyectoquantum.py         # Synthetic data generator, validation, scoring, clustering
+│   ├── Explicacion.md             # Technical methodology notes (Spanish)
+│   └── test.py                    # Streamlit smoke test
+└── tests/
+    ├── conftest.py                # Shared fixtures and Streamlit mock
+    ├── test_validation.py         # Schema and domain validation tests (16 tests)
+    ├── test_rules.py              # Risk scoring and classification tests (13 tests)
+    ├── test_clustering.py         # K-Means clustering pipeline tests (9 tests)
+    └── test_error_scenarios.py    # Documented failure modes and known gaps (11 tests)
 ```
 
 ---
@@ -74,34 +86,29 @@ cd cryptorisk-ai
 pip install -r requirements.txt
 ```
 
-> **Note:** See the [Recommendations](#recommendations) section — `requirements.txt` is not yet present in the repository. Until it is added, install dependencies manually:
-> ```bash
-> pip install streamlit pandas numpy scikit-learn
-> ```
-
 ---
 
 ## Running the Project
 
-The application requires a CSV inventory file as input. Follow these two steps.
+A pre-built synthetic inventory is already committed at `modelo/inventario_sintetico.csv`. Upload it directly in the dashboard sidebar — no generation step is required.
 
-### Step 1 — Generate the synthetic dataset
-
-Run the data generator from the repository root to produce the inventory CSV:
-
-```bash
-python modelo/proyectoquantum.py
-```
-
-This writes `inventario_sintetico.csv` to the working directory. The output is deterministic (seed = 42) and produces 60 synthetic cryptographic assets.
-
-### Step 2 — Launch the dashboard
+### Step 1 — Launch the dashboard
 
 ```bash
 streamlit run modelo/app.py
 ```
 
-The application opens in your browser at `http://localhost:8501`. Use the sidebar file uploader to load the CSV generated in Step 1.
+The application opens in your browser at `http://localhost:8501`. Use the sidebar file uploader to load `modelo/inventario_sintetico.csv`.
+
+### Step 2 — (Optional) Regenerate the synthetic dataset
+
+To reproduce the dataset from scratch:
+
+```bash
+python modelo/proyectoquantum.py
+```
+
+The output is deterministic (seed = 42) and produces 60 synthetic cryptographic assets.
 
 ---
 
@@ -115,7 +122,7 @@ assets (seed=42)            │
                             ├─ Validate schema (13 columns, domain values)
                             ├─ Score each asset (6 weighted dimensions)
                             ├─ Normalize scores to 0–100 scale
-                            ├─ Classify risk level (High / Medium / Low)
+                            ├─ Classify risk level (Alto / Medio / Bajo)
                             ├─ Cluster assets with K-Means (k=2,3,4)
                             └─ Render dashboard + export results CSV
 ```
@@ -173,11 +180,9 @@ This project is released under the [MIT License](LICENSE).
 
 ## Recommendations
 
-The following items are missing from the repository and should be added before submission or public release:
+Suggested improvements for future iterations:
 
 | Item | Description |
 |---|---|
-| `requirements.txt` | No dependency file exists. Add one with `streamlit`, `pandas`, `numpy`, and `scikit-learn` at pinned major versions to ensure a reproducible environment. |
-| `data/inventario_sintetico.csv` | The synthetic dataset is generated at runtime but never committed. Committing it enables the dashboard to run from a fresh clone without the data generation step. |
 | Screenshots | No application screenshots are included. A screenshot of the dashboard in the README significantly improves first impressions on GitHub. |
 | Separate module files | `validacion.py`, `reglas.py`, and `clustering.py` are documented inside `proyectoquantum.py` but do not exist as importable `.py` files. Extracting them would eliminate the current duplication of logic between the generator and the dashboard. |
