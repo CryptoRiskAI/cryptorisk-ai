@@ -175,6 +175,13 @@ if archivo is not None:
         if errores:
             st.write(errores)
     else:
+
+        if len(df_valido) < 2:
+            st.error(
+                "At least two valid records are required to perform clustering."
+                )
+                st.stop()
+
         df = aplicar_reglas(df_valido)
         df = aplicar_clustering(df)
 
