@@ -166,9 +166,10 @@ assets (seed=42)            │
 
 | Name | Role |
 |---|---|
-| _Team member_ | _Role_ |
-| _Team member_ | _Role_ |
-| _Team member_ | _Role_ |
+| _Nancy Janneth Cicua Rodriguez_ | _Dataset_ |
+| _Jose David Espinel Cortes_ | _Security_ |
+| _Laura Sofia Sanchez Soto_ | _Dashboard_ |
+| _Yury Dayana Velasquez Alvarez_ | _Testing_ |
 
 ---
 
