@@ -5,80 +5,80 @@
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)
 
-A post-quantum cryptographic risk assessment tool that scores, clusters, and prioritizes cryptographic assets for migration readiness.
+Una herramienta de evaluación de riesgos criptográficos frente a la computación cuántica que puntúa, agrupa y prioriza activos criptográficos según su preparación para la migración.
 
 ---
 
-## Overview
+## Descripción General
 
-CryptoRisk AI evaluates a synthetic inventory of cryptographic assets against the threat of quantum computing, specifically the risk of *harvest now, decrypt later* (HNDL) attacks. For each asset, it applies a deterministic scoring model across six risk dimensions — including algorithm vulnerability to Shor's algorithm and network exposure — to produce an explainable, normalized risk score. Assets are then grouped using K-Means clustering to support migration planning.
+CryptoRisk AI evalúa un inventario sintético de activos criptográficos frente a la amenaza de la computación cuántica, específicamente el riesgo de ataques *harvest now, decrypt later* (HNDL). Para cada activo, aplica un modelo determinista de puntuación a través de seis dimensiones de riesgo —incluyendo la vulnerabilidad del algoritmo frente al algoritmo de Shor y la exposición en la red— para generar una puntuación de riesgo explicable y normalizada. Posteriormente, los activos se agrupan utilizando K-Means para facilitar la planificación de la migración.
 
-The project was developed as an academic MVP for the Cyber Quantum Summer School.
-
----
-
-## Features
-
-- **Dataset validation** — enforces a 13-column schema and validates categorical values against defined domains before any analysis runs
-- **Deterministic risk scoring** — computes a weighted risk score across six dimensions, normalized to a 0–100 scale, with no randomness or ML model involved in the scoring itself
-- **Risk classification** — classifies each asset as High, Medium, or Low risk based on score thresholds
-- **K-Means clustering** — groups assets by risk profile, automatically selecting the optimal number of clusters (k = 2, 3, or 4) using the silhouette score
-- **Interactive dashboard** — Streamlit application displaying key metrics, a top-10 highest-risk ranking, risk and cluster distribution charts, and a full inventory table
-- **Migration recommendations** — generates a deterministic textual recommendation for each asset based on its risk level, referencing the Mosca model (x + y > z) as a prioritization criterion
-- **Results export** — downloads the scored and clustered inventory as a CSV file
-- **Synthetic data generation** — reproducible generator (seed = 42) that produces a 60-asset inventory for testing and demonstration
+El proyecto fue desarrollado como un MVP académico para la **Cyber Quantum Summer School**.
 
 ---
 
-## Project Structure
+## Características
 
-```
+- **Validación del conjunto de datos** — aplica un esquema obligatorio de 13 columnas y valida los valores categóricos frente a dominios predefinidos antes de ejecutar cualquier análisis.
+- **Puntuación determinista de riesgo** — calcula una puntuación ponderada de riesgo a través de seis dimensiones, normalizada en una escala de 0 a 100, sin utilizar aleatoriedad ni modelos de aprendizaje automático para el cálculo.
+- **Clasificación del riesgo** — clasifica cada activo como Riesgo Alto, Medio o Bajo según umbrales de puntuación.
+- **Agrupamiento con K-Means** — agrupa los activos según su perfil de riesgo, seleccionando automáticamente el número óptimo de clústeres (k = 2, 3 o 4) mediante la puntuación *silhouette*.
+- **Panel interactivo** — aplicación en Streamlit que muestra métricas principales, un ranking de los 10 activos con mayor riesgo, gráficos de distribución por riesgo y clústeres, además de la tabla completa del inventario.
+- **Recomendaciones de migración** — genera una recomendación textual determinista para cada activo según su nivel de riesgo, utilizando el modelo de Mosca (x + y > z) como criterio de priorización.
+- **Exportación de resultados** — permite descargar el inventario puntuado y agrupado en formato CSV.
+- **Generación de datos sintéticos** — generador reproducible (semilla = 42) que crea un inventario de 60 activos para pruebas y demostraciones.
+
+---
+
+## Estructura del Proyecto
+
+```text
 cryptorisk-ai/
 ├── .github/
 │   └── workflows/
-│       └── tests.yml              # CI pipeline (GitHub Actions, ubuntu-latest)
+│       └── tests.yml              # Pipeline de CI (GitHub Actions, ubuntu-latest)
 ├── LICENSE
 ├── README.md
-├── pytest.ini                     # pytest configuration
-├── requirements.txt               # Pinned dependencies
+├── pytest.ini                     # Configuración de pytest
+├── requirements.txt               # Dependencias fijadas
 ├── data/
-│   └── README.md                  # Dataset documentation and licensing
+│   └── README.md                  # Documentación y licencia del conjunto de datos
 ├── modelo/
-│   ├── app.py                     # Streamlit dashboard — main application entry point
-│   ├── inventario_sintetico.csv   # Pre-built synthetic 60-asset dataset (seed=42)
-│   ├── proyectoquantum.py         # Synthetic data generator, validation, scoring, clustering
-│   ├── Explicacion.md             # Technical methodology notes (Spanish)
-│   └── test.py                    # Streamlit smoke test
+│   ├── app.py                     # Dashboard en Streamlit — punto de entrada principal
+│   ├── inventario_sintetico.csv   # Conjunto de datos sintético de 60 activos (semilla=42)
+│   ├── proyectoquantum.py         # Generación de datos, validación, puntuación y agrupamiento
+│   ├── Explicacion.md             # Notas técnicas de la metodología (Español)
+│   └── test.py                    # Prueba básica de Streamlit
 └── tests/
-    ├── conftest.py                # Shared fixtures and Streamlit mock
-    ├── test_validation.py         # Schema and domain validation tests (16 tests)
-    ├── test_rules.py              # Risk scoring and classification tests (13 tests)
-    ├── test_clustering.py         # K-Means clustering pipeline tests (9 tests)
-    └── test_error_scenarios.py    # Documented failure modes and known gaps (11 tests)
+    ├── conftest.py                # Fixtures compartidos y mock de Streamlit
+    ├── test_validation.py         # Pruebas de validación del esquema y dominios (16 pruebas)
+    ├── test_rules.py              # Pruebas de puntuación y clasificación (13 pruebas)
+    ├── test_clustering.py         # Pruebas del flujo de K-Means (9 pruebas)
+    └── test_error_scenarios.py    # Modos de fallo documentados y limitaciones conocidas (11 pruebas)
 ```
 
 ---
 
-## Technologies
+## Tecnologías
 
-| Library | Role |
+| Biblioteca | Función |
 |---|---|
-| [Python 3.8+](https://www.python.org/) | Core language |
-| [Streamlit](https://streamlit.io/) | Interactive web dashboard |
-| [pandas](https://pandas.pydata.org/) | Data loading, validation, and manipulation |
-| [NumPy](https://numpy.org/) | Numerical operations |
-| [scikit-learn](https://scikit-learn.org/) | K-Means clustering, StandardScaler, silhouette score |
+| [Python 3.8+](https://www.python.org/) | Lenguaje principal |
+| [Streamlit](https://streamlit.io/) | Dashboard web interactivo |
+| [pandas](https://pandas.pydata.org/) | Carga, validación y manipulación de datos |
+| [NumPy](https://numpy.org/) | Operaciones numéricas |
+| [scikit-learn](https://scikit-learn.org/) | Agrupamiento K-Means, StandardScaler y puntuación silhouette |
 
 ---
 
-## Prerequisites
+## Requisitos Previos
 
-Before running the project, ensure the following software is installed:
+Antes de ejecutar el proyecto, asegúrate de tener instalado el siguiente software:
 
-- **Python 3.10 or newer**
+- **Python 3.10 o superior**
 - **Git**
 
-Verify your Python installation:
+Verifica la instalación de Python:
 
 ### Windows
 
@@ -86,7 +86,7 @@ Verify your Python installation:
 py --version
 ```
 
-or
+o
 
 ```powershell
 python --version
@@ -100,9 +100,9 @@ python3 --version
 
 ---
 
-## Installation
+## Instalación
 
-Clone the repository:
+Clona el repositorio:
 
 ```bash
 git clone https://github.com/CryptoRiskAI/cryptorisk-ai.git
@@ -111,7 +111,7 @@ cd cryptorisk-ai
 
 ### Windows
 
-Install the required dependencies using the Python launcher:
+Instala las dependencias requeridas utilizando el lanzador de Python:
 
 ```powershell
 py -m pip install -r requirements.txt
@@ -123,25 +123,25 @@ py -m pip install -r requirements.txt
 python3 -m pip install -r requirements.txt
 ```
 
-> **Note**
+> **Nota**
 >
-> Using `python -m pip` (or `py -m pip` on Windows) is recommended because it guarantees that the packages are installed into the same Python interpreter used to run the application.
+> Se recomienda utilizar `python -m pip` (o `py -m pip` en Windows), ya que garantiza que los paquetes se instalen en el mismo intérprete de Python que ejecutará la aplicación.
 
 ---
 
-## Running the Project
+## Ejecución del Proyecto
 
-A sample dataset is already included at:
+Ya se incluye un conjunto de datos de ejemplo en:
 
-```
+```text
 modelo/inventario_sintetico.csv
 ```
 
-No data generation is required for the demonstration.
+No es necesario generar datos para la demostración.
 
 ### Windows
 
-Launch the dashboard using:
+Inicia el dashboard con:
 
 ```powershell
 py -m streamlit run modelo/app.py
@@ -153,21 +153,21 @@ py -m streamlit run modelo/app.py
 python3 -m streamlit run modelo/app.py
 ```
 
-The application will be available at:
+La aplicación estará disponible en:
 
-```
+```text
 http://localhost:8501
 ```
 
-Use the sidebar file uploader to load:
+Utiliza el cargador de archivos de la barra lateral para abrir:
 
-```
+```text
 modelo/inventario_sintetico.csv
 ```
 
-### Optional — Regenerate the dataset
+### Opcional — Regenerar el conjunto de datos
 
-If you want to reproduce the synthetic inventory from scratch:
+Si deseas reproducir el inventario sintético desde cero:
 
 #### Windows
 
@@ -181,88 +181,88 @@ py modelo/proyectoquantum.py
 python3 modelo/proyectoquantum.py
 ```
 
-The generator uses a fixed random seed (`42`), ensuring reproducible results.
+El generador utiliza una semilla aleatoria fija (`42`), garantizando resultados reproducibles.
 
 ---
 
-## Workflow
+## Flujo de Trabajo
 
-```
+```text
 proyectoquantum.py          modelo/app.py
 ──────────────────          ─────────────────────────────────────────────
-Generate 60 synthetic  →    Upload CSV via sidebar
-assets (seed=42)            │
-                            ├─ Validate schema (13 columns, domain values)
-                            ├─ Score each asset (6 weighted dimensions)
-                            ├─ Normalize scores to 0–100 scale
-                            ├─ Classify risk level (Alto / Medio / Bajo)
-                            ├─ Cluster assets with K-Means (k=2,3,4)
-                            └─ Render dashboard + export results CSV
+Generar 60 activos     →    Cargar CSV desde la barra lateral
+sintéticos (semilla=42)     │
+                             ├─ Validar esquema (13 columnas y dominios)
+                             ├─ Puntuar cada activo (6 dimensiones ponderadas)
+                             ├─ Normalizar puntuaciones a una escala de 0–100
+                             ├─ Clasificar nivel de riesgo (Alto / Medio / Bajo)
+                             ├─ Agrupar activos con K-Means (k=2,3,4)
+                             └─ Mostrar dashboard + exportar resultados en CSV
 ```
 
-**Risk scoring dimensions** — each scored 0–10 and summed to a maximum of 60:
+**Dimensiones de la puntuación de riesgo** — cada una se puntúa de 0 a 10, con un máximo total de 60 puntos:
 
-| Dimension | Rationale |
+| Dimensión | Justificación |
 |---|---|
-| Algorithm | Quantum vulnerability — RSA-2048 and ECC-P256 are broken by Shor's algorithm; PQC algorithms score zero risk |
-| Exposure | Likelihood of data interception; drives the HNDL threat |
-| Criticality | Operational importance of the asset |
-| Sensitivity | Data classification level (Secret → Public) |
-| Retention | Years the data must remain confidential |
-| Migration | Complexity of migrating away from the current algorithm |
+| Algoritmo | Vulnerabilidad cuántica — RSA-2048 y ECC-P256 son vulnerables al algoritmo de Shor; los algoritmos PQC obtienen riesgo cero. |
+| Exposición | Probabilidad de interceptación de los datos; impulsa la amenaza HNDL. |
+| Criticidad | Importancia operativa del activo. |
+| Sensibilidad | Nivel de clasificación de la información (Secreta → Pública). |
+| Retención | Años durante los cuales los datos deben permanecer confidenciales. |
+| Migración | Complejidad para migrar desde el algoritmo criptográfico actual. |
 
 ---
 
-## Repository Organization
+## Organización del Repositorio
 
-| Path | Purpose |
+| Ruta | Propósito |
 |---|---|
-| `modelo/app.py` | Streamlit dashboard. Contains the UI, validation, scoring, and clustering logic. This is the application entry point. |
-| `modelo/proyectoquantum.py` | Synthetic inventory generator. Also contains documented implementations of the validation, scoring, and clustering modules. |
-| `modelo/Explicacion.md` | Technical explanation of the risk engine and clustering methodology in Spanish. Covers the silhouette score rationale and the Mosca model reference. |
-| `modelo/test.py` | Minimal Streamlit smoke test — verifies the framework launches correctly. |
-| `data/README.md` | Describes the dataset schema, column definitions, and domain values. States that no real cryptographic assets, keys, or personal data are included. |
+| `modelo/app.py` | Dashboard de Streamlit. Contiene la interfaz, la validación, la puntuación y la lógica de agrupamiento. Es el punto de entrada principal de la aplicación. |
+| `modelo/proyectoquantum.py` | Generador del inventario sintético. También contiene implementaciones documentadas de los módulos de validación, puntuación y agrupamiento. |
+| `modelo/Explicacion.md` | Explicación técnica del motor de riesgo y de la metodología de agrupamiento en español. Incluye la justificación del uso de la puntuación silhouette y la referencia al modelo de Mosca. |
+| `modelo/test.py` | Prueba mínima de Streamlit para verificar que el framework se inicia correctamente. |
+| `data/README.md` | Describe el esquema del conjunto de datos, las definiciones de las columnas y los valores permitidos. Especifica que no se incluyen activos criptográficos reales, claves ni datos personales. |
 
 ---
 
-## Future Improvements
+## Mejoras Futuras
 
-- **Modular source layout** — extract the validation, scoring, and clustering logic into importable modules (`src/validacion.py`, `src/reglas.py`, `src/clustering.py`) so they can be tested and reused independently
-- **Sub-score breakdown** — display the six individual dimension scores per asset in the dashboard to make the risk explanation more granular
-- **Mosca computation** — implement the full Mosca inequality (x + y > z) dynamically per asset, where x is the required data security horizon, y is the estimated migration duration, and z is the projected quantum threat timeline
-- **Real inventory support** — extend the schema and validation to support anonymized real-world cryptographic inventories in addition to synthetic data
-- **Automated pipeline** — add a single-command entrypoint that generates the dataset and launches the dashboard without the two-step manual process
+- **Arquitectura modular** — extraer la lógica de validación, puntuación y agrupamiento en módulos independientes (`src/validacion.py`, `src/reglas.py`, `src/clustering.py`) para facilitar su reutilización y pruebas.
+- **Desglose de subpuntuaciones** — mostrar en el dashboard las seis puntuaciones individuales por dimensión para ofrecer explicaciones de riesgo más detalladas.
+- **Cálculo del modelo de Mosca** — implementar dinámicamente la desigualdad completa de Mosca (x + y > z) para cada activo, donde x representa el horizonte de seguridad requerido, y el tiempo estimado de migración y z la proyección temporal de la amenaza cuántica.
+- **Soporte para inventarios reales** — ampliar el esquema y la validación para admitir inventarios criptográficos reales anonimizados además de datos sintéticos.
+- **Pipeline automatizado** — añadir un punto de entrada de un solo comando que genere el conjunto de datos y ejecute el dashboard sin requerir el proceso manual de dos pasos.
 
 ---
 
-## Team
+## Equipo
 
-| Name | Role |
+| Nombre | Rol |
 |---|---|
-| _Nancy Janneth Cicua Rodriguez_ | _Dataset_ |
-| _Jose David Espinel Cortes_ | _Security_ |
+| _Nancy Janneth Cicua Rodriguez_ | _Conjunto de datos_ |
+| _Jose David Espinel Cortes_ | _Seguridad_ |
 | _Laura Sofia Sanchez Soto_ | _Dashboard_ |
-| _Yury Dayana Velasquez Alvarez_ | _Testing_ |
+| _Yury Dayana Velasquez Alvarez_ | _Pruebas_ |
 
 ---
 
-## Reproducibility
+## Reproducibilidad
 
-The project was successfully cloned, installed, and executed on a clean Windows environment using only the instructions provided in this repository. This validation confirmed that the application can be reproduced without requiring any hidden setup steps beyond installing Python and Git.
+El proyecto fue clonado, instalado y ejecutado correctamente en un entorno Windows limpio utilizando únicamente las instrucciones proporcionadas en este repositorio. Esta validación confirmó que la aplicación puede reproducirse sin requerir pasos de configuración ocultos más allá de instalar Python y Git.
 
 ---
 
-## Recommendations
+## Recomendaciones
 
-Suggested improvements for future iterations:
+Mejoras sugeridas para futuras versiones:
 
-| Item | Description |
+| Elemento | Descripción |
 |---|---|
-| Dashboard screenshots | Include screenshots or a short GIF of the application to improve repository presentation. |
-| Docker support | A Docker configuration could simplify deployment and further improve reproducibility in future versions. |
+| Capturas del dashboard | Incluir capturas de pantalla o un GIF corto de la aplicación para mejorar la presentación del repositorio. |
+| Soporte con Docker | Una configuración con Docker podría simplificar el despliegue y mejorar aún más la reproducibilidad en futuras versiones. |
 
 ---
 
-## License
+## Licencia
 
-This project is released under the [MIT License](LICENSE).
+Este proyecto se distribuye bajo la [Licencia MIT](LICENSE).
