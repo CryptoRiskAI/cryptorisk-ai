@@ -71,44 +71,117 @@ cryptorisk-ai/
 
 ---
 
+## Prerequisites
+
+Before running the project, ensure the following software is installed:
+
+- **Python 3.10 or newer**
+- **Git**
+
+Verify your Python installation:
+
+### Windows
+
+```powershell
+py --version
+```
+
+or
+
+```powershell
+python --version
+```
+
+### Linux / macOS
+
+```bash
+python3 --version
+```
+
+---
+
 ## Installation
 
-**Clone the repository:**
+Clone the repository:
 
 ```bash
 git clone https://github.com/CryptoRiskAI/cryptorisk-ai.git
 cd cryptorisk-ai
 ```
 
-**Install dependencies:**
+### Windows
+
+Install the required dependencies using the Python launcher:
+
+```powershell
+py -m pip install -r requirements.txt
+```
+
+### Linux / macOS
 
 ```bash
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
+
+> **Note**
+>
+> Using `python -m pip` (or `py -m pip` on Windows) is recommended because it guarantees that the packages are installed into the same Python interpreter used to run the application.
 
 ---
 
 ## Running the Project
 
-A pre-built synthetic inventory is already committed at `modelo/inventario_sintetico.csv`. Upload it directly in the dashboard sidebar — no generation step is required.
+A sample dataset is already included at:
 
-### Step 1 — Launch the dashboard
-
-```bash
-streamlit run modelo/app.py
+```
+modelo/inventario_sintetico.csv
 ```
 
-The application opens in your browser at `http://localhost:8501`. Use the sidebar file uploader to load `modelo/inventario_sintetico.csv`.
+No data generation is required for the demonstration.
 
-### Step 2 — (Optional) Regenerate the synthetic dataset
+### Windows
 
-To reproduce the dataset from scratch:
+Launch the dashboard using:
 
-```bash
-python modelo/proyectoquantum.py
+```powershell
+py -m streamlit run modelo/app.py
 ```
 
-The output is deterministic (seed = 42) and produces 60 synthetic cryptographic assets.
+### Linux / macOS
+
+```bash
+python3 -m streamlit run modelo/app.py
+```
+
+The application will be available at:
+
+```
+http://localhost:8501
+```
+
+Use the sidebar file uploader to load:
+
+```
+modelo/inventario_sintetico.csv
+```
+
+### Optional — Regenerate the dataset
+
+If you want to reproduce the synthetic inventory from scratch:
+
+#### Windows
+
+```powershell
+py modelo/proyectoquantum.py
+```
+
+#### Linux / macOS
+
+```bash
+python3 modelo/proyectoquantum.py
+```
+
+The generator uses a fixed random seed (`42`), ensuring reproducible results.
 
 ---
 
@@ -173,9 +246,9 @@ assets (seed=42)            │
 
 ---
 
-## License
+## Reproducibility
 
-This project is released under the [MIT License](LICENSE).
+The project was successfully cloned, installed, and executed on a clean Windows environment using only the instructions provided in this repository. This validation confirmed that the application can be reproduced without requiring any hidden setup steps beyond installing Python and Git.
 
 ---
 
@@ -185,5 +258,11 @@ Suggested improvements for future iterations:
 
 | Item | Description |
 |---|---|
-| Screenshots | No application screenshots are included. A screenshot of the dashboard in the README significantly improves first impressions on GitHub. |
-| Separate module files | `validacion.py`, `reglas.py`, and `clustering.py` are documented inside `proyectoquantum.py` but do not exist as importable `.py` files. Extracting them would eliminate the current duplication of logic between the generator and the dashboard. |
+| Dashboard screenshots | Include screenshots or a short GIF of the application to improve repository presentation. |
+| Docker support | A Docker configuration could simplify deployment and further improve reproducibility in future versions. |
+
+---
+
+## License
+
+This project is released under the [MIT License](LICENSE).
